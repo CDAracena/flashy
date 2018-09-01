@@ -20,6 +20,10 @@ nav {
   color: #5a4018;
 }
 
+.center-container {
+  height: 100vh;
+}
+
 .mainTitle {
   text-shadow: 3px 2px 15px #695d5dcc;
   animation: opacityFlash 2s infinite alternate;
@@ -47,6 +51,41 @@ nav {
 
 .column-title {
   padding-top: 5px;
+}
+
+.menu-bar-li {
+  display: flex;
+  align-items: center;
+  color: #5a401878;
+}
+
+.menu-bar-li i {
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-bar-li i:hover {
+  transform: rotateZ(90deg);
+  color: #5a4018;
+}
+
+.flash-card-col {
+  background-color: #eae9e9;
+  font-family: 'Titillium Web', sans-serif;
+  border-radius: 3px;
+}
+
+.flash-card-column-container {
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+  top: 30%;
+}
+
+.todo-list-column {
+  border-radius: 0px 0px 0px 4px;
+  border-left: 2px solid #e4c17f;
 }
 
 @keyframes opacityFlash {
