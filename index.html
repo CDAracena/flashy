@@ -26,6 +26,26 @@
       </ul>
     </nav>
     <div class="center-container container-fluid">
+      <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add New Card</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><i class="fa fa-times-circle close-modal-icon"></i></span>
+        </button>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="card-title-input form-control form-control-sm">
+              <textarea rows="3" class="card-description-input"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn add-card-button cancel-button">Add Card</button>
+              <button type="button" class="btn cancel-button cancel-btn" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="central-row row justify-content-between">
         <div class="col-lg-2 col-sm col-md-3 col-xs completed-column d-none d-sm-block">
           <div class="row completed-column-row">
@@ -39,10 +59,14 @@
         <div class="col-lg-8 col-sm col-md col-xs px-0 flash-card-column-container">
           <div class="row justify-content-center mx-0">
             <div class="col-lg-8 col-sm-8 col-xs-8 col-md-8 text-center flash-card-col">
-              Testing
+              <span class="status-message"></span>
+              <div class="add-button-container">
+                <i class="fa fa-arrow-right arrow-icon"></i>
+                <i class="fa fa-plus-circle add-button"></i>
+                <i class="fa fa-arrow-left arrow-icon"> </i>
+              </div>
             </div>
           </div>
-
         </div>
         <div class="col-lg-2 col-sm col-md-3 col-xs- px-0 completed-column d-none d-sm-block todo-list-column">
           <div class="row completed-column-row mx-0">

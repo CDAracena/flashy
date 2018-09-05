@@ -72,6 +72,9 @@ nav {
   background-color: #eae9e9;
   font-family: 'Titillium Web', sans-serif;
   border-radius: 3px;
+  box-shadow: 2px 2px 1px 2px #e4c17f;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .flash-card-column-container {
@@ -92,16 +95,110 @@ nav {
   0% {
     opacity: 0.1;
   }
+
   25% {
     opacity: 0.3;
   }
+
   50% {
     opacity: 0.5;
   }
+
   75% {
     opacity: 0.7;
   }
+
   100% {
     opacity: 0.9;
   }
+}
+
+.card-title-input {
+  width: 50%;
+  margin: auto;
+}
+
+.empty-array-col {
+  display: none;
+}
+
+.card-description-input {
+  width: 75%;
+  border-radius: 5px;
+}
+
+.status-message {
+  color: darkred;
+  text-shadow: 1px 1px 1px #a7967e;
+  font-size: 1.5rem;
+}
+
+.add-button:hover {
+  color: #7f6a4b;
+}
+
+.add-button {
+  color: #e4c17f;
+  font-size: 2.3rem;
+  transition: all 0.4s ease-in;
+  cursor: pointer;
+}
+
+.arrow-icon {
+  color: #e4c17f;
+  font-size: 2.2rem;
+}
+
+.modal {
+  background-color: #0808089e;
+}
+
+.modal-content {
+  animation: rotateModal 0.5s forwards;
+  font-family: 'Titillium Web', sans-serif;
+  background-color: #fffaf0e3;
+  box-shadow: 1px 1px 1px 1px #e4c17f;
+  border: 0px;
+}
+
+@keyframes rotateModal {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  25% {
+    transform: rotateZ(160deg)
+  }
+
+  50% {
+    transform: rotateZ(260deg)
+  }
+
+  75% {
+    transform: rotateZ(360deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg)
+  }
+}
+
+.close-modal-icon:hover {
+  color: #fb2300;
+  transition: all 0.4s ease-in;
+}
+
+.close-modal-icon {
+  color: #5a4018;
+}
+
+.cancel-button {
+  background-color: #e4c17f;
+  color: #272323cc;
+  font-weight: bold;
+}
+
+.cancel-button:hover {
+  background-color: #272323cc;
+  color: #e4c17f;
 }
