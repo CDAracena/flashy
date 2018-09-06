@@ -149,8 +149,16 @@ nav {
   font-size: 2.2rem;
 }
 
+.modal-title {
+  color: #4f4536;
+}
+
 .modal {
   background-color: #0808089e;
+}
+
+.modal-body {
+  text-align: center;
 }
 
 .modal-content {
