@@ -114,8 +114,9 @@ nav {
 }
 
 .card-title-input {
-  width: 50%;
+  width: 80%;
   margin: auto;
+  margin-bottom: 10px;
 }
 
 .empty-array-col {
@@ -123,8 +124,11 @@ nav {
 }
 
 .card-description-input {
-  width: 75%;
+  width: 80%;
   border-radius: 5px;
+  font-family: 'Titillium Web', sans-serif;
+  color: #52473a;
+  outline-color: #e4c17f;
 }
 
 .status-message {
@@ -209,4 +213,33 @@ nav {
 .cancel-button:hover {
   background-color: #272323cc;
   color: #e4c17f;
+}
+
+.incomplete-col-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flash-card-item {
+  text-align: center;
+  border-radius: 3px;
+  color: #272323cc;
+  border: 1px solid #27232378;
+  padding: 15px;
+  margin: auto;
+  width: 60%;
+  background-color: #f1ebe0;
+  color: #796240;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  box-shadow: 1px 1px 5px 1px #524737;
+  margin-bottom: 5px;
+  transition: all 0.4s ease-in;
+  justify-content: center
+}
+
+.completed-head-title-column:hover .flash-card-item {
+  background-color: #e4c17f;
+  color: #524737;
 }
