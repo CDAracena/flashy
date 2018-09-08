@@ -25,6 +25,15 @@ $(document).ready(function() {
 
   })
 
+function addCard(){
+  let row = document.querySelector('.incomplete-col-container')
+    let col = document.createElement('div');
+    col.classList.add('flash-card-item');
+    col.innerText = IncompleteArray[IncompleteArray.length -1].fcTitle;
+    row.appendChild(col)
+
+}
+
 // Adding a new card function starts here
 
   $('.add-card-button').click(function() {
@@ -36,6 +45,8 @@ $(document).ready(function() {
       toastr.success(`${cardTitle.value} has been added!`)
       $('.card-title-input').val('');
       $('.card-description-input').val('');
+      addCard();
+
     } else {
       toastr.error('Please make sure to fill out card title or card description')
     }
