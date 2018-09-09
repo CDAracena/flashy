@@ -7,7 +7,7 @@ $(document).ready(function() {
   let cardDefinition = document.querySelector('.card-description-input');
 
   if (IncompleteArray.length === 0) {
-    $('.status-message').text("Looks like you haven't added any cards yet...");
+    $('.status-message').text("Lets get started");
   }
 
   let addFlashCardBtn = document.querySelector('.add-button');
@@ -41,11 +41,14 @@ function addCard(){
       IncompleteArray.push({fcTitle: cardTitle.value, fcDescription: cardDefinition.value});
       console.log(IncompleteArray)
       $('.modal').fadeOut('slow');
-      $('.status-message').text("Looks like you added some cards! Feel free to add more..or start")
+      $('.status-message').text("Add more")
       toastr.success(`${cardTitle.value} has been added!`)
       $('.card-title-input').val('');
       $('.card-description-input').val('');
       addCard();
+      $('.flash-card-col').removeClass('col-lg-8').addClass('col-lg-4');
+      $('.flash-card-col').css({"margin-right": "15px"})
+      $('.flag-container').css({"display": "block"})
 
     } else {
       toastr.error('Please make sure to fill out card title or card description')
