@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   let IncompleteArray = [];
   let CompletedArray = [];
-  let randomCard = Math.floor(Math.random() * IncompleteArray.length)
+  let randomCard;
   let cardTitle = document.querySelector('.card-title-input')
   let cardDefinition = document.querySelector('.card-description-input');
 
@@ -39,7 +39,6 @@ function addCard(){
   $('.add-card-button').click(function() {
     if (cardTitle.value && cardDefinition.value) {
       IncompleteArray.push({fcTitle: cardTitle.value, fcDescription: cardDefinition.value});
-      console.log(IncompleteArray)
       $('.modal').fadeOut('slow');
       $('.status-message').text("Add more")
       toastr.success(`${cardTitle.value} has been added!`)
@@ -55,4 +54,11 @@ function addCard(){
     }
   })
 // Adding a new card function ends here
+
+
+//Start Quiz function starts here
+$('.start-btn').click(function(){
+  randomCard = Math.floor(Math.random() * IncompleteArray.length)
+  console.log(IncompleteArray[randomCard]);
+})
 })

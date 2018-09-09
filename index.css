@@ -236,7 +236,18 @@ nav {
   box-shadow: 1px 1px 5px 1px #524737;
   margin-bottom: 5px;
   transition: all 0.4s ease-in;
-  justify-content: center
+  justify-content: center;
+  animation: scale 0.6s ease-in;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1)
+  }
 }
 
 .completed-head-title-column:hover .flash-card-item {
