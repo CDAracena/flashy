@@ -143,7 +143,7 @@ nav {
 
 .add-button {
   color: #e4c17f;
-  font-size: 2.3rem;
+  font-size: 2.8rem;
   transition: all 0.4s ease-in;
   cursor: pointer;
 }
@@ -242,4 +242,29 @@ nav {
 .completed-head-title-column:hover .flash-card-item {
   background-color: #e4c17f;
   color: #524737;
+}
+
+.flag-container {
+  display: none;
+}
+
+.start-btn {
+  animation: opacityFlash 0.5s forwards;
+  color: #e4c17f;
+  font-weight: bold;
+  padding-top: 10px;
+  transition: all ease-in-out;
+  font-size: 2.8rem;
+}
+
+.start-btn:hover {
+  cursor: pointer;
+  animation: opacityFlash 0.5s infinite alternate;
+  color: darkgreen;
+}
+
+.start-quiz-text {
+  color: darkred;
+  text-shadow: 1px 1px 1px #a7967e;
+  font-size: 1.5rem;
 }
