@@ -279,3 +279,14 @@ nav {
   text-shadow: 1px 1px 1px #a7967e;
   font-size: 1.5rem;
 }
+
+.timer-div {
+  display: none;
+  background-color: #eae9e9;
+  font-family: 'Titillium Web', sans-serif;
+  border-radius: 3px;
+  box-shadow: 2px 2px 1px 2px #e4c17f;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-top: 15px;
+}
