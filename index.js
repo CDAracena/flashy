@@ -59,6 +59,22 @@ function addCard(){
 //Start Quiz function starts here
 $('.start-btn').click(function(){
   randomCard = Math.floor(Math.random() * IncompleteArray.length)
-  console.log(IncompleteArray[randomCard]);
+  $('.timer-div').css({"display": "block"});
+  $('.flag-container').css({"display": "none"});
+  $('.add-btn-container').css({"display": "none"})
+
+  var timer = new Timer();
+
+  timer.start({countdown: true, startValues: {seconds: 20}});
+  $('.timer-div').html(timer.getTimeValues().toString());
+
+  timer.addEventListener('secondsUpdated', function (e) {
+  $('.timer-div').html(timer.getTimeValues().toString());
+  });
+  timer.addEventListener('targetAchieved', function (e) {
+  $('.timer-div').html('Times Up');
+  });
 })
+
+
 })
