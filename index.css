@@ -250,6 +250,33 @@ nav {
   }
 }
 
+@keyframes rotateY {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+.render-card-title {
+  color: #796240;
+}
+
+.render-card-rotate {
+  background-color: #e4c17f;
+  color: #524737;
+}
+
+.add-scale-keyframe {
+  animation: scale 0.6s ease-in;
+}
+
+.add-rotate-keyframe {
+  animation: rotateY 1s ease-in;
+}
+
 .completed-head-title-column:hover .flash-card-item {
   background-color: #e4c17f;
   color: #524737;

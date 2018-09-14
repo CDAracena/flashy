@@ -59,7 +59,8 @@ $(document).ready(function() {
   $('.start-btn').click(function() {
     $('.timer-div').css({"display": "block"});
     $('.flag-container').fadeOut('slow');
-    $('.add-btn-container').removeClass('col-lg-4').addClass('col-lg-8');
+    $('.add-btn-container').removeClass('col-lg-4').addClass('col-lg-8 h2 render-card-title');
+    $('.add-btn-container').addClass('add-scale-keyframe');
 
     var timer = new Timer();
 
@@ -78,6 +79,10 @@ $(document).ready(function() {
     });
     timer.addEventListener('targetAchieved', function(e) {
       $('.timer-div').html('Times Up');
+      $('.add-btn-container').addClass('add-rotate-keyframe');
+      $('.add-btn-container').addClass('render-card-rotate')
+      $('.add-btn-container').html(IncompleteArray[randomCard].fcDescription);
+
     });
   })
 
