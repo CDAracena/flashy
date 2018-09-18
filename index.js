@@ -34,6 +34,13 @@ $(document).ready(function() {
 
   }
 
+  function addCompletedCard() {
+    let row = document.querySelector('.completed-col-container');
+    let col = document.createElement('div');
+    col.classList.add('flash-card-item');
+    col.innerText = IncompleteArray[randomCard].fcTitle
+    row.appendChild(col);
+  }
   // Adding a new card function starts here
 
   $('.add-card-button').click(function() {
@@ -82,8 +89,25 @@ $(document).ready(function() {
       $('.add-btn-container').addClass('add-rotate-keyframe');
       $('.add-btn-container').addClass('render-card-rotate')
       $('.add-btn-container').html(IncompleteArray[randomCard].fcDescription);
+      $('.results-row').fadeIn("slow")
+      $('.results-row').css({"display": "flex"})
 
     });
   })
+
+  let resultOptions = document.querySelectorAll('.results-choice');
+  for (let i = 0; i < resultOptions.length; i++) {
+    resultOptions[i].addEventListener('click', function() {
+      if (resultOptions[i].classList.contains("correct")) {
+        CompletedArray.push(IncompleteArray[randomCard])
+        addCompletedCard();
+        IncompleteArray.splice(IncompleteArray.indexOf(IncompleteArray[randomCard], 1))
+        console.log(IncompleteArray);
+        console.log(CompletedArray)
+      } else if (resultOptions[i].classList.contains("wrong")) {
+        console.log("You got it wrong =[")
+      }
+    })
+  }
 
 })
