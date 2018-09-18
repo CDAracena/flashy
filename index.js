@@ -95,15 +95,24 @@ $(document).ready(function() {
     });
   })
 
+  function removeCard(flashCardItem) {
+    incompleteFlashCards = document.querySelectorAll('.flash-card-item');
+    for (let i = 0; i < incompleteFlashCards.length; i++) {
+      if (incompleteFlashCards[i].innerText === flashCardItem) {
+        incompleteFlashCards[i].classList.add("remove")
+        $(".remove").fadeOut("slow");
+      }
+    }
+  }
+
   let resultOptions = document.querySelectorAll('.results-choice');
   for (let i = 0; i < resultOptions.length; i++) {
     resultOptions[i].addEventListener('click', function() {
       if (resultOptions[i].classList.contains("correct")) {
         CompletedArray.push(IncompleteArray[randomCard])
+        removeCard(IncompleteArray[randomCard].fcTitle);
         addCompletedCard();
         IncompleteArray.splice(IncompleteArray.indexOf(IncompleteArray[randomCard], 1))
-        console.log(IncompleteArray);
-        console.log(CompletedArray)
       } else if (resultOptions[i].classList.contains("wrong")) {
         console.log("You got it wrong =[")
       }
