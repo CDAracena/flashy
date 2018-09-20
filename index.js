@@ -5,6 +5,7 @@ $(document).ready(function() {
   let randomCard;
   let cardTitle = document.querySelector('.card-title-input')
   let cardDefinition = document.querySelector('.card-description-input');
+  let incompleteContainer;
 
   if (IncompleteArray.length === 0) {
     $('.status-message').text("Lets get started");
@@ -95,12 +96,13 @@ $(document).ready(function() {
     });
   })
 
-  function removeCard(flashCardItem) {
+  function removeCard(flashCardItem){
     incompleteFlashCards = document.querySelectorAll('.flash-card-item');
-    for (let i = 0; i < incompleteFlashCards.length; i++) {
-      if (incompleteFlashCards[i].innerText === flashCardItem) {
-        incompleteFlashCards[i].classList.add("remove")
-        $(".remove").fadeOut("slow");
+    for (let i = 0; i < incompleteFlashCards.length; i++){
+      console.log(incompleteFlashCards[i].innerText)
+      if (incompleteFlashCards[i].innerText === flashCardItem){
+        incompleteFlashCards[i].classList.add('selected');
+        $('.selected').fadeOut("slow");
       }
     }
   }
@@ -108,6 +110,7 @@ $(document).ready(function() {
   let resultOptions = document.querySelectorAll('.results-choice');
   for (let i = 0; i < resultOptions.length; i++) {
     resultOptions[i].addEventListener('click', function() {
+      console.log(IncompleteArray)
       if (resultOptions[i].classList.contains("correct")) {
         CompletedArray.push(IncompleteArray[randomCard])
         removeCard(IncompleteArray[randomCard].fcTitle);
@@ -117,6 +120,9 @@ $(document).ready(function() {
         console.log("You got it wrong =[")
       }
     })
+    console.log(IncompleteArray);
+    console.log(CompletedArray)
+
   }
 
 })
