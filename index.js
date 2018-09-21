@@ -2,10 +2,45 @@ $(document).ready(function() {
 
   let IncompleteArray = [];
   let CompletedArray = [];
-  let randomCard;
+  let randomCardIndex;
   let cardTitle = document.querySelector('.card-title-input')
   let cardDefinition = document.querySelector('.card-description-input');
   let timerClock;
+  let randomCard;
+
+  function moveCardToComplete() {
+    CompletedArray.push(randomCard)
+    removeCard(IncompleteArray[randomCardIndex].fcTitle)
+    addCompletedCard(IncompleteArray[randomCardIndex].fcTitle)
+  }
+
+  function removeCardFromIncomplete() {
+    IncompleteArray.splice(randomCardIndex, 1)
+  }
+
+  function setrandomCardIndex() {
+    randomCardIndex = Math.floor(Math.random() * IncompleteArray.length);
+    randomCard = IncompleteArray[randomCardIndex];
+  }
+
+  function startQuiz() {
+    setrandomCardIndex();
+    timer();
+  }
+
+  function continueQuiz() {
+    setrandomCardIndex();
+    timer();
+  }
+
+  function game() {
+    startQuiz();
+    moveCardTo()
+    for (let i = IncompleteArray.length; i == 0; i--) {
+      continueQuiz();
+    }
+    // contiueQuiz()
+  }
 
   if (IncompleteArray.length === 0) {
     $('.status-message').text("Lets get started");
@@ -26,8 +61,7 @@ $(document).ready(function() {
 
   })
 
-
-// Works !!
+  // Works !!
   function addCard() {
     let row = document.querySelector('.incomplete-col-container')
     let col = document.createElement('div');
@@ -36,9 +70,8 @@ $(document).ready(function() {
     row.appendChild(col)
   }
 
-
-// Adding a new card function starts here
-// Works
+  // Adding a new card function starts here
+  // Works
   $('.add-card-button').click(function() {
     if (cardTitle.value && cardDefinition.value) {
       IncompleteArray.push({fcTitle: cardTitle.value, fcDescription: cardDefinition.value});
@@ -56,51 +89,56 @@ $(document).ready(function() {
     }
   })
   // Adding a new card function ends here
-
-function timer(){
-  $('.timer-div').css({"display": "block"});
-  $('.flag-container').fadeOut('slow');
-  $('.add-btn-container').removeClass('col-lg-4').addClass('col-lg-8 h2 render-card-title');
-  $('.add-btn-container').addClass('add-scale-keyframe');
-
-  timerClock = new Timer();
-
-  timerClock.start({
-    countdown: true,
-    startValues: {
-      seconds: 1
-    }
-  });
-  $('.timer-div').html(timerClock.getTimeValues().toString());
-  randomCard = Math.floor(Math.random() * IncompleteArray.length)
-  console.log('Random has been selected after start: ' + JSON.stringify(IncompleteArray[randomCard]))
-  console.log('Incomplete Array currently contains: ' + JSON.stringify(IncompleteArray));
-  $('.add-btn-container').html(IncompleteArray[randomCard].fcTitle);
-  // console.log('selected card is :' + IncompleteArray[randomCard].fcTitle + ' incomplete array is ' + JSON.stringify(IncompleteArray))
-  timerClock.addEventListener('secondsUpdated', function(e) {
+  function setTimeDivChanges() {
+    $('.timer-div').css({"display": "block"});
+    $('.flag-container').fadeOut('slow');
+    $('.add-btn-container').removeClass('col-lg-4').addClass('col-lg-8 h2 render-card-title');
+    $('.add-btn-container').addClass('add-scale-keyframe');
+  }
+  function setHTMLTime() {
     $('.timer-div').html(timerClock.getTimeValues().toString());
-  });
-  timerClock.addEventListener('targetAchieved', function(e) {
+    $('.add-btn-container').html(IncompleteArray[randomCardIndex].fcTitle);
+  }
+
+  function setTimerFinish() {
     $('.timer-div').html('Times Up');
     $('.add-btn-container').addClass('add-rotate-keyframe');
     $('.add-btn-container').addClass('render-card-rotate')
-    $('.add-btn-container').html(IncompleteArray[randomCard].fcDescription);
+    $('.add-btn-container').html(IncompleteArray[randomCardIndex].fcDescription);
     $('.results-row').fadeIn("slow")
     $('.results-row').css({"display": "flex"})
+  }
+  function timer() {
+    setTimeDivChanges();
 
-  });
-}
+    timerClock = new Timer();
+
+    timerClock.start({
+      countdown: true,
+      startValues: {
+        seconds: 1
+      }
+    });
+    setHTMLTime();
+
+    timerClock.addEventListener('secondsUpdated', function(e) {
+      $('.timer-div').html(timerClock.getTimeValues().toString());
+    });
+    timerClock.addEventListener('targetAchieved', function(e) {
+      setTimerFinish();
+
+    });
+  }
   //Start Quiz function starts here
   $('.start-btn').click(function() {
-    timer();
+    startQuiz();
 
   })
 
-  function removeCard(flashCardItem){
+  function removeCard(flashCardItem) {
     incompleteFlashCards = document.querySelectorAll('.flash-card-item');
-    for (let i = 0; i < incompleteFlashCards.length; i++){
-      if (incompleteFlashCards[i].innerText === flashCardItem){
-        // console.log("The card that should be removed:" + incompleteFlashCards[i].innerText)
+    for (let i = 0; i < incompleteFlashCards.length; i++) {
+      if (incompleteFlashCards[i].innerText === flashCardItem) {
         incompleteFlashCards[i].classList.add('selected');
         $('.selected').fadeOut("slow");
       }
@@ -115,28 +153,14 @@ function timer(){
   }
 
   let resultOptions = document.querySelectorAll('.results-choice');
-  resultOptions[0].addEventListener('click', function(){
-    shiftCards(IncompleteArray, resultOptions[0])
-  })
-  resultOptions[1].addEventListener('click', function(){
-    shiftCards(IncompleteArray, resultOptions[1])
-  })
+  resultOptions[0].addEventListener('click', function() {
+    moveCardToComplete();
+    removeCardFromIncomplete();
 
-
-  function shiftCards(incompleteArr, options){
-    if (options.classList.contains("correct") && incompleteArr) {
-      CompletedArray.push(incompleteArr[randomCard])
-      // console.log( 'Item being pushed into completed array:' + incompleteArr[randomCard].fcTitle)
-      removeCard(incompleteArr[randomCard].fcTitle);
-      addCompletedCard(incompleteArr[randomCard].fcTitle);
-      IncompleteArray.splice(incompleteArr.indexOf(incompleteArr[randomCard], 1))
-      console.log('Incomplete Array is now: '+ JSON.stringify(incompleteArr) + 'and flash card: ' + JSON.stringify(incompleteArr[randomCard]) + 'was removed');
-      timer();
-      console.log("Timer has been called and random card is: " + JSON.stringify(IncompleteArray[randomCard]))
-      console.log("Timer has been called and incomplete array has: " + JSON.stringify(IncompleteArray));
-    } else if (options.classList.contains("wrong")) {
-      timer();
-    }
-  }
+    continueQuiz();
+  })
+  resultOptions[1].addEventListener('click', function() {
+    continueQuiz();
+  })
 
 })
