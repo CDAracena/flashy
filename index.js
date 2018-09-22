@@ -91,13 +91,14 @@ $(document).ready(function() {
     $('.add-btn-container').addClass('add-scale-keyframe');
   }
   function setHTMLTime() {
-    $('.timer-div').html(timerClock.getTimeValues().toString());
+    $('.timer-text').text(timerClock.getTimeValues().toString());
     $('.add-btn-container').html(IncompleteArray[randomCardIndex].fcTitle);
     $('.add-btn-container').css({"margin": "0px"});
   }
 
   function setTimerFinish() {
-    $('.timer-div').html('Times Up');
+    $('.timer-text').text('Times Up');
+    $('.timer-text').addClass('bounce');
     $('.add-btn-container').addClass('add-rotate-keyframe');
     $('.add-btn-container').addClass('render-card-rotate');
     $('.add-btn-container').html(IncompleteArray[randomCardIndex].fcDescription);
@@ -118,7 +119,7 @@ $(document).ready(function() {
     setHTMLTime();
 
     timerClock.addEventListener('secondsUpdated', function(e) {
-      $('.timer-div').html(timerClock.getTimeValues().toString());
+      $('.timer-text').text(timerClock.getTimeValues().toString());
     });
     timerClock.addEventListener('targetAchieved', function(e) {
       setTimerFinish();
@@ -154,9 +155,11 @@ $(document).ready(function() {
     removeCardFromIncomplete();
     $('.results-row').fadeOut("slow");
     $('.results-row').css({"display": "none"});
+    $('.timer-text').removeClass('bounce');
     continueQuiz();
   })
   resultOptions[1].addEventListener('click', function() {
+    $('.timer-text').removeClass('bounce')
     continueQuiz();
   })
 
