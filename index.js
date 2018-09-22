@@ -29,17 +29,12 @@ $(document).ready(function() {
   }
 
   function continueQuiz() {
-    setrandomCardIndex();
-    timer();
-  }
-
-  function game() {
-    startQuiz();
-    moveCardTo()
-    for (let i = IncompleteArray.length; i == 0; i--) {
-      continueQuiz();
+    if (IncompleteArray.length > 0) {
+      setrandomCardIndex();
+      timer();
+    } else {
+      console.log(IncompleteArray);
     }
-    // contiueQuiz()
   }
 
   if (IncompleteArray.length === 0) {
@@ -98,12 +93,13 @@ $(document).ready(function() {
   function setHTMLTime() {
     $('.timer-div').html(timerClock.getTimeValues().toString());
     $('.add-btn-container').html(IncompleteArray[randomCardIndex].fcTitle);
+    $('.add-btn-container').css({"margin": "0px"});
   }
 
   function setTimerFinish() {
     $('.timer-div').html('Times Up');
     $('.add-btn-container').addClass('add-rotate-keyframe');
-    $('.add-btn-container').addClass('render-card-rotate')
+    $('.add-btn-container').addClass('render-card-rotate');
     $('.add-btn-container').html(IncompleteArray[randomCardIndex].fcDescription);
     $('.results-row').fadeIn("slow")
     $('.results-row').css({"display": "flex"})
@@ -116,7 +112,7 @@ $(document).ready(function() {
     timerClock.start({
       countdown: true,
       startValues: {
-        seconds: 1
+        seconds: 15
       }
     });
     setHTMLTime();
@@ -156,7 +152,8 @@ $(document).ready(function() {
   resultOptions[0].addEventListener('click', function() {
     moveCardToComplete();
     removeCardFromIncomplete();
-
+    $('.results-row').fadeOut("slow");
+    $('.results-row').css({"display": "none"});
     continueQuiz();
   })
   resultOptions[1].addEventListener('click', function() {
