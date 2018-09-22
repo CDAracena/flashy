@@ -145,6 +145,21 @@ nav {
   font-size: 1.5rem;
 }
 
+.bounce {
+  animation: bounce 0.5s infinite alternate;
+  animation-timing-function: cubic-bezier(.5, 0.0.5, 1, .5);
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate3d(0, 0, 0)
+  }
+
+  100% {
+    transform: translate3d(0, 15px, 0);
+  }
+}
+
 .add-button:hover {
   color: #7f6a4b;
 }
