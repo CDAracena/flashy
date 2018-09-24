@@ -33,7 +33,7 @@ $(document).ready(function() {
       setrandomCardIndex();
       timer();
     } else {
-      console.log(IncompleteArray);
+      $('.add-btn-container').text("You got all the answers right!")
     }
   }
 
@@ -156,10 +156,14 @@ $(document).ready(function() {
     $('.results-row').fadeOut("slow");
     $('.results-row').css({"display": "none"});
     $('.timer-text').removeClass('bounce');
+    toastr.success('Correct!')
     continueQuiz();
   })
   resultOptions[1].addEventListener('click', function() {
-    $('.timer-text').removeClass('bounce')
+    $('.results-row').fadeOut("slow");
+    $('.results-row').css({"display": "none"});
+    $('.timer-text').removeClass('bounce');
+    toastr.warning('Try again!')
     continueQuiz();
   })
 
