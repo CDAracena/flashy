@@ -393,6 +393,28 @@ nav {
 .mobile-item {
   display: none;
   font-size: 1.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.data-div {
+  display: none;
+}
+
+.close-mobile-div {
+  display: none;
+  float: right;
+  font-size: 1.1rem;
+  transition: all 0.8s ease-in;
+}
+
+.data-div-open {
+  z-index: 1;
+  display: block;
+  width: 90%;
+  background-color: #ab9b84c2;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 2px 2px 2px #e4c17f;
 }
 
 .mobile-item:hover {

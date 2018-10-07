@@ -167,11 +167,45 @@ $(document).ready(function() {
     continueQuiz();
   })
 
-
-
-  $('.fa-bars').click(function(){
-  $('.nav-container').toggleClass('nav-add-height');
-  $('.mobile-item').css({"display": "block"})
+  $('.fa-bars').click(function() {
+    $('.nav-container').toggleClass('nav-add-height');
+    $('.mobile-item').css({"display": "block"})
   })
 
+  function mobileRemoveContainers() {
+    $('.add-btn-container').fadeOut('slow');
+    $('.flag-container').fadeOut('slow');
+  }
+
+  function renderDataDiv() {
+    $('.data-div').css({"display": "block"})
+    $('.data-div').addClass('data-div-open');
+    $('.close-mobile-div').fadeIn('slow');
+    $('.inner-data-div').css({"display": "flex", "flex-direction": "column"})
+  }
+  function renderMobileDiv(option) {
+    renderDataDiv();
+    mobileRemoveContainers();
+    if (option === "Incomplete") {
+      let results = IncompleteArray.map(item => `<div class="flash-card-item">${item.fcTitle}</div>`).join('');
+      document.querySelector('.inner-data-div').innerHTML = results;
+    }
+  }
+
+  let mobileOptions = document.querySelectorAll('.mobile-item');
+
+  mobileOptions[0].addEventListener('click', function() {
+    renderMobileDiv('Incomplete')
+  })
+
+  mobileOptions[1].addEventListener('click', function() {
+    console.log(mobileOptions[1].innerText);
+  })
+
+  $('.close-mobile-div').click(function() {
+    $('.data-div').fadeOut('slow');
+    $('.add-btn-container').fadeIn('slow');
+    $('.flag-container').fadeIn('slow');
+
+  })
 })
