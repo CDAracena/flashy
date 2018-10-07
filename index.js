@@ -167,4 +167,11 @@ $(document).ready(function() {
     continueQuiz();
   })
 
+
+
+  $('.fa-bars').click(function(){
+  $('.nav-container').toggleClass('nav-add-height');
+  $('.mobile-item').css({"display": "block"})
+  })
+
 })
