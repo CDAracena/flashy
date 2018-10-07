@@ -375,3 +375,28 @@ nav {
   color: #e4c17f;
   font-size: 2.3rem;
 }
+
+@keyframes add-height {
+  0% {
+    height: 2.5rem;
+  }
+
+  100% {
+    height: 30vh;
+  }
+}
+
+.nav-add-height {
+  animation: add-height 1s ease-in forwards;
+}
+
+.mobile-item {
+  display: none;
+  font-size: 1.2rem;
+}
+
+.mobile-item:hover {
+  text-shadow: 1px 1px 1px #ab9b84;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  border-radius: 5px;
+}
