@@ -209,7 +209,7 @@ $(document).ready(function() {
   })
 
 const isQuizRunning = ()=>{
-  if (quizRunning) {
+  if (quizRunning || IncompleteArray.length === 0 && CompletedArray.length === 0) {
   $('.flag-container').css({"display": "none"});
 } else {
   $('.flag-container').fadeIn('slow');
