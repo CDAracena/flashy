@@ -7,6 +7,7 @@ $(document).ready(function() {
   let cardDefinition = document.querySelector('.card-description-input');
   let timerClock;
   let randomCard;
+  let quizRunning = false;
 
   function moveCardToComplete() {
     CompletedArray.push(randomCard)
@@ -24,6 +25,7 @@ $(document).ready(function() {
   }
 
   function startQuiz() {
+    quizRunning = true;
     setrandomCardIndex();
     timer();
   }
@@ -183,6 +185,7 @@ $(document).ready(function() {
     $('.close-mobile-div').fadeIn('slow');
     $('.inner-data-div').css({"display": "flex", "flex-direction": "column"})
   }
+
   function renderMobileDiv(option) {
     renderDataDiv();
     mobileRemoveContainers();
@@ -202,10 +205,17 @@ $(document).ready(function() {
     console.log(mobileOptions[1].innerText);
   })
 
+const isQuizRunning = ()=>{
+  if (quizRunning) {
+  $('.flag-container').css({"display": "none"});
+} else {
+  $('.flag-container').fadeIn('slow');
+}
+}
+
   $('.close-mobile-div').click(function() {
     $('.data-div').fadeOut('slow');
     $('.add-btn-container').fadeIn('slow');
-    $('.flag-container').fadeIn('slow');
-
+    isQuizRunning();
   })
 })
