@@ -187,22 +187,25 @@ $(document).ready(function() {
   }
 
   function renderMobileDiv(option) {
+    let flashCards;
+    if (option === "Incomplete") {
+      flashCards = IncompleteArray.map(item => `<div class="flash-card-item">${item.fcTitle}</div>`).join('');
+    } else if (option === "Completed") {
+      flashCards = CompletedArray.map(item => `<div class="flash-card-item">${item.fcTitle}</div>`).join('');
+    }
     renderDataDiv();
     mobileRemoveContainers();
-    if (option === "Incomplete") {
-      let results = IncompleteArray.map(item => `<div class="flash-card-item">${item.fcTitle}</div>`).join('');
-      document.querySelector('.inner-data-div').innerHTML = results;
-    }
+    document.querySelector('.inner-data-div').innerHTML = flashCards;
   }
 
-  let mobileOptions = document.querySelectorAll('.mobile-item');
+  const mobileOptions = document.querySelectorAll('.mobile-item');
 
   mobileOptions[0].addEventListener('click', function() {
     renderMobileDiv('Incomplete')
   })
 
   mobileOptions[1].addEventListener('click', function() {
-    console.log(mobileOptions[1].innerText);
+    renderMobileDiv('Completed')
   })
 
 const isQuizRunning = ()=>{
