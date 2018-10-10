@@ -58,7 +58,7 @@ $(document).ready(function() {
 
   })
 
-  // Works !!
+
   function addCard() {
     let row = document.querySelector('.incomplete-col-container')
     let col = document.createElement('div');
@@ -67,8 +67,7 @@ $(document).ready(function() {
     row.appendChild(col)
   }
 
-  // Adding a new card function starts here
-  // Works
+
   $('.add-card-button').click(function() {
     if (cardTitle.value && cardDefinition.value) {
       IncompleteArray.push({fcTitle: cardTitle.value, fcDescription: cardDefinition.value});
