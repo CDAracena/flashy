@@ -33,7 +33,7 @@ nav {
 }
 
 .mainTitle:hover {
-  transform: rotateY(360deg);
+  transform: rotateY(180deg);
 }
 
 .completed-column {
